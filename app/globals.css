@@ -1,0 +1,302 @@
+:root {
+  --bg: #0a0c11;
+  --surface: #12151d;
+  --surface-alt: #1a1f2b;
+  --border: #232838;
+  --text: #e7eaf2;
+  --text-muted: #8992a9;
+  --text-faint: #565f78;
+  --on: #49d3c9;       /* 云朵开启(proxied) */
+  --on-glow: rgba(73, 211, 201, 0.35);
+  --off: #4a5268;      /* 云朵关闭(direct) */
+  --danger: #e2664f;
+  --font-display: -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+.shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 28px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.hero h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 6px 0 0;
+}
+
+.hero-stat {
+  text-align: right;
+}
+
+.hero-stat .num {
+  font-family: var(--font-mono);
+  font-size: 40px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.hero-stat .num span {
+  color: var(--text-faint);
+  font-size: 22px;
+}
+
+.hero-stat .label {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+}
+
+.panel h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.account-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.account-form input {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 9px 12px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.account-form input:focus {
+  outline: 2px solid var(--on);
+  outline-offset: 1px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text);
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--text-faint);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-on {
+  background: rgba(73, 211, 201, 0.12);
+  border-color: var(--on);
+  color: var(--on);
+}
+
+.btn-off {
+  background: rgba(226, 102, 79, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.account-group {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.account-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface-alt);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.account-group-header strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.zone-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.zone-row .name {
+  flex: 1;
+  font-family: var(--font-mono);
+}
+
+.zone-row .status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.zone-row .status.active {
+  color: var(--on);
+  border-color: var(--on);
+}
+
+/* 小云朵开关 -- 页面的视觉签名元素 */
+.cloud-toggle {
+  position: relative;
+  width: 34px;
+  height: 22px;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.cloud-toggle svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--off);
+  transition: fill 0.2s, filter 0.2s;
+}
+
+.cloud-toggle.on svg {
+  fill: var(--on);
+  filter: drop-shadow(0 0 6px var(--on-glow));
+}
+
+.cloud-toggle.pending svg {
+  fill: var(--text-faint);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--on);
+}
+
+.result-log {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  max-height: 260px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  color: var(--text-muted);
+}
+
+.result-log .ok { color: var(--on); }
+.result-log .fail { color: var(--danger); }
+
+.empty-state {
+  color: var(--text-faint);
+  font-size: 13px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.error-text {
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+a.link {
+  color: var(--on);
+}
