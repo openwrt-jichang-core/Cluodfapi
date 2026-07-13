@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { listAccounts } from "@/lib/store";
 import { listZones } from "@/lib/cloudflare";
 
+export const dynamic = "force-dynamic";  
+
 export async function GET() {
   const accounts = listAccounts();
 
